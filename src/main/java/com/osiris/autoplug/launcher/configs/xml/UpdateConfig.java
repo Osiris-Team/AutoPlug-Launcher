@@ -8,17 +8,13 @@
 
 package com.osiris.autoplug.launcher.configs.xml;
 
-import com.osiris.autoplug.launcher.configs.AutoPlugFilesManager;
 import com.osiris.autoplug.launcher.configs.yml.LauncherConfig;
 import org.update4j.Configuration;
-import org.update4j.FileMetadata;
 
-import java.io.*;
-import java.net.MalformedURLException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
