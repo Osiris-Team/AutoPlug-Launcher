@@ -1,13 +1,14 @@
 /*
- * Copyright (c) 2020 [Osiris Team](https://github.com/Osiris-Team)
- *  All rights reserved.
- *  
- *  This software is copyrighted work licensed under the terms of the
- *  AutoPlug License.  Please consult the file "LICENSE" for details.
+ * Copyright Osiris Team
+ * All rights reserved.
+ *
+ * This software is copyrighted work licensed under the terms of the
+ * AutoPlug License.  Please consult the file "LICENSE" for details.
  */
 
 package com.osiris.autoplug.launcher.configs.yml;
 
+import com.osiris.autoplug.launcher.utils.JavaPath;
 import org.simpleyaml.configuration.file.YamlFile;
 
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class LauncherConfig {
         validateOptions();
 
         //Finally save the file
-        save();
+        //save();
 
     }
 
@@ -51,12 +52,16 @@ public class LauncherConfig {
 
         config.addDefault("autoplug-launcher-config.update-check.enable", true);
         config.addDefault("autoplug-launcher-config.update-check.mode", "stable-builds");
+        
+        JavaPath jp = new JavaPath();
+        config.addDefault("autoplug-launcher-config.java-path", jp.getPath());
 
     }
 
     //User configuration
     public static boolean update_check_enabled;
     public static String update_check_mode;
+    public static String java_path;
 
 
     private void setUserOptions(){
@@ -64,6 +69,7 @@ public class LauncherConfig {
         //UPDATE CHECK
         update_check_enabled = config.getBoolean("autoplug-launcher-config.update-check.enable");
         update_check_mode = config.getString("autoplug-launcher-config.update-check.mode");
+        java_path = config.getString("autoplug-launcher-config.java-path");
 
     }
 
@@ -79,7 +85,7 @@ public class LauncherConfig {
     }
 
 
-    private void save() {
+    public void save() {
 
         // Finally, save changes!
         try {

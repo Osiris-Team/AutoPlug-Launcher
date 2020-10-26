@@ -1,0 +1,6 @@
+com\osiris\autoplug\launcher\utils\JavaPath.class
+com\osiris\autoplug\launcher\configs\AutoPlugFilesManager.class
+com\osiris\autoplug\launcher\DuplicateCheck.class
+com\osiris\autoplug\launcher\configs\xml\UpdateConfig.class
+com\osiris\autoplug\launcher\configs\yml\LauncherConfig.class
+com\osiris\autoplug\launcher\Main.class

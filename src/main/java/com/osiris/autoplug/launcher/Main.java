@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2020 [Osiris Team](https://github.com/Osiris-Team)
- *  All rights reserved.
+ * Copyright Osiris Team
+ * All rights reserved.
  *
- *  This software is copyrighted work licensed under the terms of the
- *  AutoPlug License.  Please consult the file "LICENSE" for details.
+ * This software is copyrighted work licensed under the terms of the
+ * AutoPlug License.  Please consult the file "LICENSE" for details.
  */
 
 package com.osiris.autoplug.launcher;
@@ -31,6 +31,7 @@ public class Main implements UpdateHandler, Injectable {
 
         try {
 
+            System.out.println("Starting AutoPlug-Launcher...");
             Thread.sleep(3000);
 
             DuplicateCheck dc = new DuplicateCheck();
@@ -42,6 +43,9 @@ public class Main implements UpdateHandler, Injectable {
             //Loads and validates the yml config file
             LauncherConfig yml = new LauncherConfig();
             yml.load();
+            //Save defaults
+            yml.save();
+
 
             //Check if we are at the updates directory /autoplug-system. If we aren`t then it means we are not an update file.
             String dir = System.getProperty("user.dir");
@@ -57,7 +61,7 @@ public class Main implements UpdateHandler, Injectable {
 
                     //Start the updated file
                     List<String> commands = new ArrayList<>();
-                    commands.add("java");
+                    commands.add(LauncherConfig.java_path);
                     commands.add("-jar");
                     commands.add(target.toString());
                     ProcessBuilder processBuilder = new ProcessBuilder(commands);
@@ -147,7 +151,7 @@ public class Main implements UpdateHandler, Injectable {
 
                     //Start the downloaded updated file
                     List<String> commands = new ArrayList<>();
-                    commands.add("java");
+                    commands.add(LauncherConfig.java_path);
                     commands.add("-jar");
                     commands.add(System.getProperty("user.dir")+"/autoplug-system/AutoPlugLauncher.jar");
                     ProcessBuilder processBuilder = new ProcessBuilder(commands);

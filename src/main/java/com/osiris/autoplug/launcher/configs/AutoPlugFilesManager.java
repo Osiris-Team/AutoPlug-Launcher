@@ -1,9 +1,9 @@
 /*
- * Copyright (c) 2020 [Osiris Team](https://github.com/Osiris-Team)
- *  All rights reserved.
+ * Copyright Osiris Team
+ * All rights reserved.
  *
- *  This software is copyrighted work licensed under the terms of the
- *  AutoPlug License.  Please consult the file "LICENSE" for details.
+ * This software is copyrighted work licensed under the terms of the
+ * AutoPlug License.  Please consult the file "LICENSE" for details.
  */
 
 package com.osiris.autoplug.launcher.configs;
@@ -64,13 +64,19 @@ public class AutoPlugFilesManager {
     }
 
     public boolean isFirstRun(){
-        //If more than 50% of the files is missing and had to be generated, the user is considered as a new user!
+        //If of the files is missing and had to be generated, the user is considered as a new user!
         if (missing==total){
             return true;
         }
         return false;
     }
 
+    /**
+     * Iterates through all directories and creates missing files
+     * @param file_type Enter 'dir' if its a directory
+     * @param files The file we check for its existence
+     * @throws IOException
+     */
     private void checkFiles(String file_type, List<File> files) throws IOException {
 
         total++;

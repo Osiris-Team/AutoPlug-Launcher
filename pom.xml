@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2020 [Osiris Team](https://github.com/Osiris-Team)
-  ~  All rights reserved.
+  ~ Copyright Osiris Team
+  ~ All rights reserved.
   ~
-  ~  This software is copyrighted work licensed under the terms of the
-  ~  AutoPlug License.  Please consult the file "LICENSE" for details.
+  ~ This software is copyrighted work licensed under the terms of the
+  ~ AutoPlug License.  Please consult the file "LICENSE" for details.
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -14,15 +14,16 @@
 
 	<groupId>com.osiris.autoplug.launcher</groupId>
 	<artifactId>autoplug-launcher</artifactId>
-	<version>0.9</version>
+	<version>0.1</version>
 	<packaging>jar</packaging>
 
 	<name>AutoPlugLauncher</name>
 
 
 	<properties>
-		<final.name>AutoPlugLauncher</final.name>
-		<java.version>1.8</java.version>
+		<id>0</id>
+		<name>${project.name}</name>
+		<version>${project.version}</version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -34,6 +35,19 @@
 	</repositories>
 
 	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.gridkit.lab/jvm-attach-api -->
+		<dependency>
+			<groupId>org.gridkit.lab</groupId>
+			<artifactId>jvm-attach-api</artifactId>
+			<version>1.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.8.6</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.update4j</groupId>
@@ -51,7 +65,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>${final.name}</finalName>
+		<finalName>${name}</finalName>
 		<defaultGoal>clean package</defaultGoal>
 		<plugins>
 
@@ -60,8 +74,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
+					<source>java.version</source>
+					<target>java.version</target>
 				</configuration>
 			</plugin>
 
@@ -100,6 +114,24 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0.0</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>write-project-properties</goal>
+						</goals>
+						<configuration>
+							<outputFile>${project.build.outputDirectory}/launcher-properties</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 		<resources>
 			<resource>
